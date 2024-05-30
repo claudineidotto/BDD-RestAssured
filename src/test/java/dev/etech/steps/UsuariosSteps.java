@@ -5,17 +5,21 @@ import dev.etech.endpoints.UsuariosEndpoint;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
+import io.restassured.response.Response;
 
 public class UsuariosSteps {
     private UsuariosEndpoint usuariosEndpoint = new UsuariosEndpoint();
-    String json;
+    String jsonPayload;
+    private Response responseData;
     @Dado("que o payload possua dados de um novo usuário")
     public void que_o_payload_possua_dados_de_um_usuario() throws JsonProcessingException {
-        json = usuariosEndpoint.carregaPayloadNovoUsuario();
+        jsonPayload = usuariosEndpoint.carregaPayloadNovoUsuario();
     }
 
     @Quando("realizar a criação de um novo usuário")
     public void realizarACriaçãoDeUmNovoUsuário() {
+        responseData = usuariosEndpoint.createNewUser(jsonPayload);
+
     }
 
     @Então("deve validar  o status code {string}")
