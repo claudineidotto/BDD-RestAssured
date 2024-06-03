@@ -25,6 +25,11 @@ public class UsuariosSteps {
     @Então("deve validar  o status code {string}")
     public void deveValidarOStatusCode(String arg0) {
     }
+
+    @Então("deve criar o usuario com sucesso")
+    public void deveCriarOUsuarioComSucesso() {
+        usuariosEndpoint.validaCadastroSucesso(responseData);
+    }
 }
 
 

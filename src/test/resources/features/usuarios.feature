@@ -10,5 +10,4 @@ Funcionalidade: Validar o endpoint de usuários
         Cenario: Verificar cadastro de novo usuário com sucesso
             Dado que o payload possua dados de um novo usuário
             Quando realizar a criação de um novo usuário
-            Então deve validar  o status code "200"
-
+            Então deve criar o usuario com sucesso

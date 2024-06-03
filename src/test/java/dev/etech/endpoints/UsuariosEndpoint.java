@@ -43,4 +43,11 @@ public class UsuariosEndpoint extends RestConfig {
         return response;
     }
 
+    public int obterStatusCode(){
+        return response.getStatusCode();
+    }
+    public void validaCadastroSucesso(Response responseData){
+
+    }
+
 }
