@@ -2,6 +2,7 @@ package dev.etech.steps;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import dev.etech.endpoints.UsuariosEndpoint;
+import dev.etech.pojo.usuarios.UsuarioResponse;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
@@ -28,7 +29,7 @@ public class UsuariosSteps {
 
     @Então("deve criar o usuario com sucesso")
     public void deveCriarOUsuarioComSucesso() {
-        usuariosEndpoint.validaCadastroSucesso(responseData);
+        usuariosEndpoint.validaCadastroSucesso(responseData.getBody().as(UsuarioResponse.class));
     }
 }
 
