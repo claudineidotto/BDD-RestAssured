@@ -40,6 +40,27 @@ public class UsuariosEndpoint extends RestConfig {
 
         return objectMapper.writeValueAsString(usuariosRequest);
     }
+    public String carregaPayloadUsuarioExistente() throws JsonProcessingException {
+
+        usuariosRequest.setNome(TestDataGenerator.gerarNomeAleatorio());
+        usuariosRequest.setApelido("Marcos QA");
+        usuariosRequest.setTelefone("11999911112");
+        usuariosRequest.setDataNascimento("2020-12-12T00:00:00.000Z");
+        usuariosRequest.setEmail("teste@teste12321.com.br");
+        usuariosRequest.setSenha("Teste@123");
+
+        endereco.setCep("07120000");
+        endereco.setRua("Rua Teste");
+        endereco.setBairro("Bairro Teste");
+        endereco.setCidade("Guarulhos");
+        endereco.setEstado("SP");
+
+        usuariosRequest.setEndereco(endereco);
+
+        usuariosRequest.setGoogleId("sadrwsdfasdgvasdfasdc");
+
+        return objectMapper.writeValueAsString(usuariosRequest);
+    }
 
     public Response createNewUser(String payload) {
         response = request
@@ -71,5 +92,9 @@ public class UsuariosEndpoint extends RestConfig {
         assertThat(responseData.getDados().getNome(), equalTo(usuariosRequest.getNome()));
         assertThat(responseData.getDados().getApelido(), equalTo(usuariosRequest.getApelido()));
 
+    }
+
+    public void validaMensagemUsuarioExistente(String mensagemAtual,String mensagemEsperada){
+        assertThat(mensagemAtual,is(mensagemEsperada));
     }
 }

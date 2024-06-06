@@ -31,6 +31,17 @@ public class UsuariosSteps {
     public void deveCriarOUsuarioComSucesso() {
         usuariosEndpoint.validaCadastroSucesso(responseData.getBody().as(UsuarioResponse.class));
     }
+
+    @Dado("que o payload possua dados de um novo usuário com email existente")
+    public void queOPayloadPossuaDadosDeUmNovoUsuárioComEmailExistente() throws JsonProcessingException {
+        jsonPayload = usuariosEndpoint.carregaPayloadUsuarioExistente();
+    }
+
+    @Então("deve visualizar a mensagem {string}")
+    public void deveVisualizarAMensagem(String mensagemEsperada) {
+        usuariosEndpoint.validaMensagemUsuarioExistente(
+                responseData.getBody().as(UsuarioResponse.class).getMensagem(),mensagemEsperada);
+    }
 }
 
 

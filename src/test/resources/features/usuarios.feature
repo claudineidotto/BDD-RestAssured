@@ -11,3 +11,8 @@ Funcionalidade: Validar o endpoint de usuários
             Dado que o payload possua dados de um novo usuário
             Quando realizar a criação de um novo usuário
             Então deve criar o usuario com sucesso
+
+        Cenario: Verificar mensagem de erro ao utilizar e-mail existente
+            Dado que o payload possua dados de um novo usuário com email existente
+            Quando realizar a criação de um novo usuário
+            Então deve visualizar a mensagem "Este e-mail já está sendo utilizado."
