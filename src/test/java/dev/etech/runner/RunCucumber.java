@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 
         features = "./src/test/resources",
         glue = "dev.etech.steps",
+        tags =  "@regressivo or @emailExistente",
         plugin = {"pretty","html:target/cucumber-reports"}
 )
 public class RunCucumber {
