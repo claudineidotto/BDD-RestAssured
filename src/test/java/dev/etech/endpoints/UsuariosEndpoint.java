@@ -3,63 +3,73 @@ package dev.etech.endpoints;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.etech.config.RestConfig;
-import dev.etech.pojo.EnderecoPojo;
-import dev.etech.pojo.UsuariosPOJO;
+import dev.etech.pojo.usuarios.Endereco;
+import dev.etech.pojo.usuarios.UsuarioResponse;
+import dev.etech.pojo.usuarios.UsuariosRequest;
 import dev.etech.utils.TestDataGenerator;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 public class UsuariosEndpoint extends RestConfig {
-    private UsuariosPOJO usuariosPOJO= new UsuariosPOJO();
-    private EnderecoPojo enderecoPojo= new EnderecoPojo();
-    private ObjectMapper objectMapper= new ObjectMapper();
-  //  private TestDataGenerator testDataGenerator= new TestDataGenerator();
+    private UsuariosRequest usuariosRequest = new UsuariosRequest();
+    private Endereco endereco = new Endereco();
+    private ObjectMapper objectMapper = new ObjectMapper();
+
+    //  private TestDataGenerator testDataGenerator= new TestDataGenerator();
     public String carregaPayloadNovoUsuario() throws JsonProcessingException {
 
-        usuariosPOJO.setNome(TestDataGenerator.gerarNomeAleatorio());
-        usuariosPOJO.setApelido("Marcos QA");
-        usuariosPOJO.setTelefone("11999911112");
-        usuariosPOJO.setDataNascimento("2020-12-12T00:00:00.000Z");
-        usuariosPOJO.setEmail(TestDataGenerator.gerarEmailAleatorio());
-        usuariosPOJO.setSenha("Teste@123");
+        usuariosRequest.setNome(TestDataGenerator.gerarNomeAleatorio());
+        usuariosRequest.setApelido("Marcos QA");
+        usuariosRequest.setTelefone("11999911112");
+        usuariosRequest.setDataNascimento("2020-12-12T00:00:00.000Z");
+        usuariosRequest.setEmail(TestDataGenerator.gerarEmailAleatorio());
+        usuariosRequest.setSenha("Teste@123");
 
-        enderecoPojo.setCep("07120000");
-        enderecoPojo.setRua("Rua Teste");
-        enderecoPojo.setBairro("Bairro Teste");
-        enderecoPojo.setCidade("Guarulhos");
-        enderecoPojo.setEstado("SP");
+        endereco.setCep("07120000");
+        endereco.setRua("Rua Teste");
+        endereco.setBairro("Bairro Teste");
+        endereco.setCidade("Guarulhos");
+        endereco.setEstado("SP");
 
-        usuariosPOJO.setEndereco(enderecoPojo);
+        usuariosRequest.setEndereco(endereco);
 
-        usuariosPOJO.setGoogleId("sadrwsdfasdgvasdfasdc");
+        usuariosRequest.setGoogleId("sadrwsdfasdgvasdfasdc");
 
-        return objectMapper.writeValueAsString(usuariosPOJO);
+        return objectMapper.writeValueAsString(usuariosRequest);
     }
 
-    public Response createNewUser (String payload){
-        response =request
+    public Response createNewUser(String payload) {
+        response = request
                 .body(payload)
                 .when()
-                .request(Method.POST,"/usuarios");
+                .request(Method.POST, "/usuarios");
 
         return response;
     }
 
-    public int obterStatusCode(){
+    public int obterStatusCode() {
         return response.getStatusCode();
     }
-    public void validaCadastroSucesso(Response responseData){
-          responseData.then()
-                  .log().all()
-                  .statusCode(201)
-                  .body("mensagem",equalTo("Usuário criado com sucesso."))
-                  .body("dados.nome",equalTo(usuariosPOJO.getNome()))
-                  .body("timestamp",is(notNullValue()))
-                  .body("dados._id",is(notNullValue()))
-                  .body("dados.email",equalTo(usuariosPOJO.getEmail()));
+
+//    public void validaCadastroSucesso(Response responseData){
+//          responseData.then()
+//                  .log().all()
+//                  .statusCode(201)
+//                  .body("mensagem",equalTo("Usuário criado com sucesso."))
+//                  .body("dados.nome",equalTo(usuariosRequest.getNome()))
+//                  .body("timestamp",is(notNullValue()))
+//                  .body("dados._id",is(notNullValue()))
+//                  .body("dados.email",equalTo(usuariosRequest.getEmail()));
+//
+//    }
+
+    public void validaCadastroSucesso(UsuarioResponse responseData) {
+        assertThat(responseData.getMensagem(), equalTo("Usuário criado com sucesso."));
+        assertThat(responseData.getDados().getNome(), equalTo(usuariosRequest.getNome()));
+        assertThat(responseData.getDados().getApelido(), equalTo(usuariosRequest.getApelido()));
 
     }
-
 }

@@ -1,5 +1,5 @@
 
-package dev.etech.pojo;
+package dev.etech.pojo.usuarios;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "cidade",
     "estado"
 })
-public class EnderecoPojo {
+public class Endereco {
 
     @JsonProperty("cep")
     private String cep;

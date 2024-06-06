@@ -1,5 +1,5 @@
 
-package dev.etech.pojo;
+package dev.etech.pojo.usuarios;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "endereco",
     "google_id"
 })
-public class UsuariosPOJO {
+public class UsuariosRequest {
 
     @JsonProperty("nome")
     private String nome;
@@ -31,7 +31,7 @@ public class UsuariosPOJO {
     @JsonProperty("senha")
     private String senha;
     @JsonProperty("endereco")
-    private EnderecoPojo enderecoPojo;
+    private Endereco endereco;
     @JsonProperty("google_id")
     private String googleId;
 
@@ -96,13 +96,13 @@ public class UsuariosPOJO {
     }
 
     @JsonProperty("endereco")
-    public EnderecoPojo getEndereco() {
-        return enderecoPojo;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
     @JsonProperty("endereco")
-    public void setEndereco(EnderecoPojo enderecoPojo) {
-        this.enderecoPojo = enderecoPojo;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     @JsonProperty("google_id")
