@@ -52,8 +52,13 @@ public class UsuariosEndpoint extends RestConfig {
     }
     public void validaCadastroSucesso(Response responseData){
           responseData.then()
+                  .log().all()
                   .statusCode(201)
-                  .body("mensagem",equalTo("Usuário criado com sucesso."));
+                  .body("mensagem",equalTo("Usuário criado com sucesso."))
+                  .body("dados.nome",equalTo(usuariosPOJO.getNome()))
+                  .body("timestamp",is(notNullValue()))
+                  .body("dados._id",is(notNullValue()))
+                  .body("dados.email",equalTo(usuariosPOJO.getEmail()));
 
     }
 
