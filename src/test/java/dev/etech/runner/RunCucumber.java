@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         features = "./src/test/resources",
         glue = "dev.etech.steps",
         tags =  "@regressivo",
-        plugin = {"pretty","html:target/cucumber-reports"}
+        plugin = {"json:target/cucumber/cucumber.json"}
 )
 public class RunCucumber {
 
