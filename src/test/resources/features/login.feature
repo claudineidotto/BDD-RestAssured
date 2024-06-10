@@ -9,4 +9,4 @@
     Cenario: Verificar login com sucesso
       Dado que o payoload foi criado com dados validos de login
       Quando realizar a chamada de login
-      Entao deve visulizar a mensagem de login "Logado com sucesso"
+      Entao deve visulizar a mensagem de login "Logado com sucesso."

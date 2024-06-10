@@ -1,8 +1,9 @@
 package dev.etech.pojo.usuarios;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -24,6 +25,8 @@ public class Dados extends UsuariosRequest {
     public String atualizadoEm;
     @JsonProperty("__v")
     public Integer v;
+    @JsonIgnore
+    private Map<String,Object> additionProperties = new HashMap<>();
 
     @JsonProperty("ultimo_acesso")
     public String getUltimoAcesso() {
@@ -47,5 +50,13 @@ public class Dados extends UsuariosRequest {
     @JsonProperty("__v")
     public Integer getV() {
         return v;
+    }
+
+    public Map<String, Object> getAdditionProperties() {
+        return additionProperties;
+    }
+    @JsonAnySetter
+    public void setAdditionProperties(String key, Object value ) {
+        this.additionProperties = additionProperties;
     }
 }

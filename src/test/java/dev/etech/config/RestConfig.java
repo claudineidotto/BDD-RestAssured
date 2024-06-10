@@ -15,6 +15,7 @@ public class RestConfig {
     private String urlBase;
     public static RequestSpecification request;
     public static Response response;
+    public static final String accessToken="";
 
     public RestConfig() {
         Properties properties = new Properties();
