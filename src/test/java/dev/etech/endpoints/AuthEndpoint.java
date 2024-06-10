@@ -28,7 +28,7 @@ public class AuthEndpoint extends RestConfig {
                 .body(payload)
                 .when()
                 .request(Method.POST, "/auth/login");
-
+        accessToken = response.getBody().jsonPath().get("dados.access_token");
         return response;
 
     }

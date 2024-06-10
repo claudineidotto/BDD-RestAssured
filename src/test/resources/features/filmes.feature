@@ -8,7 +8,8 @@ Funcionalidade: Validar o endpoint de filmes
   Contexto: Realizar login na api
     Dado que o payload foi criado com dados validos de login
     E realizar a chamada de login
-  @filmes
+
+  @filmes @regressivo
   Cenario: Validar a inclusão de um filme com sucesso
     Dado que o payload foi criado com dados validos de um filme
     Quando envia a requisição para criar o filme

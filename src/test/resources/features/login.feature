@@ -5,8 +5,8 @@
 
   Funcionalidade: Validar endpoint de Auth(login)
 
-    @login
+    @login @regressivo
     Cenario: Verificar login com sucesso
-      Dado que o payoload foi criado com dados validos de login
+      Dado que o payload foi criado com dados validos de login
       Quando realizar a chamada de login
       Entao deve visulizar a mensagem de login "Logado com sucesso."

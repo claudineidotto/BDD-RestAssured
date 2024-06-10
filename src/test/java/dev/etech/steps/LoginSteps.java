@@ -14,8 +14,8 @@ public class LoginSteps {
     private AuthEndpoint authEndpoint= new AuthEndpoint();
     private String payload;
     private Response response;
-    @Dado("que o payoload foi criado com dados validos de login")
-    public void que_o_payoload_foi_criado_com_dados_validos_de_login() throws IOException {
+    @Dado("que o payload foi criado com dados validos de login")
+    public void que_o_payload_foi_criado_com_dados_validos_de_login() throws IOException {
         payload=authEndpoint.carregaPayloadLoginSucesso();
     }
 
