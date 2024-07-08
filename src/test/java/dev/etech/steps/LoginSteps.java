@@ -24,8 +24,13 @@ public class LoginSteps {
         response = authEndpoint.realizLogin(payload);
     }
 
-    @Entao("deve visulizar a mensagem de login {string}")
-    public void deveVisulizarAMensagemDeLogin(String mensagem) {
+    @Entao("deve visualizar a mensagem de login {string}")
+    public void deveVisualizarAMensagemDeLogin(String mensagem) {
         authEndpoint.validaLoginSucesso(response.getBody().as(UsuarioResponse.class),mensagem);
+    }
+
+    @Dado("que o payload foi criado com dados invalidos de login")
+    public void queOPayloadFoiCriadoComDadosInvalidosDeLogin() throws IOException {
+        payload=authEndpoint.carregaPayloadLoginFalha();
     }
 }

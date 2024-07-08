@@ -36,4 +36,10 @@ public class AuthEndpoint extends RestConfig {
     public void validaLoginSucesso(UsuarioResponse response,String mensagem){
         assertThat(response.getMensagem(),is(mensagem));
     }
+
+    public String carregaPayloadLoginFalha() throws IOException {
+        authRequest.setEmail("teste@teste12321.com.br");
+        authRequest.setSenha("senhaincorreta");
+        return objectMapper.writeValueAsString(authRequest);
+    }
 }

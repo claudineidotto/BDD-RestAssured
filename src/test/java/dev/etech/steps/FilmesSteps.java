@@ -13,6 +13,7 @@ public class FilmesSteps {
     private FilmesEndpoint filmesEndpoint= new FilmesEndpoint();
     private String payload;
     private Response response;
+
     @Dado("que o payload foi criado com dados validos de um filme")
     public void queOpayloadFoiCriadoComDadosValidosDeUmFilme() throws IOException {
         payload = filmesEndpoint.carregaPayloadFilmesSucesso();
