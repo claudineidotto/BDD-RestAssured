@@ -16,3 +16,9 @@
       Dado que o payload foi criado com dados invalidos de login
       Quando realizar a chamada de login
       Entao deve visualizar a mensagem de login "Não autorizado."
+
+    @login @regressivo
+    Cenario: Verificar login sem senha
+      Dado que o payload foi criado com dados somente do email
+      Quando realizar a chamada de login
+      Entao deve visualizar a mensagem de login "Não autorizado."

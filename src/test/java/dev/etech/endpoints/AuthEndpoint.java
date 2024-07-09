@@ -42,4 +42,8 @@ public class AuthEndpoint extends RestConfig {
         authRequest.setSenha("senhaincorreta");
         return objectMapper.writeValueAsString(authRequest);
     }
+    public String carregaPayloadLoginSemSenha() throws IOException {
+        authRequest.setEmail("teste@teste12321.com.br");
+        return objectMapper.writeValueAsString(authRequest);
+    }
 }

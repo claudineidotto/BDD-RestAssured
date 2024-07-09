@@ -33,4 +33,9 @@ public class LoginSteps {
     public void queOPayloadFoiCriadoComDadosInvalidosDeLogin() throws IOException {
         payload=authEndpoint.carregaPayloadLoginFalha();
     }
+
+    @Dado("que o payload foi criado com dados somente do email")
+    public void queOPayloadFoiCriadoComDadosSomenteDoEmail() throws IOException {
+        payload=authEndpoint.carregaPayloadLoginSemSenha();
+    }
 }
